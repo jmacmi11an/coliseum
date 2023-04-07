@@ -12,15 +12,6 @@ function CalculateAgeFactor (age) {
       : ageFactor - ageMultiple * (age - primeAge)
 }
 
-// 100 - 27 = 73
-// so 100/73 = 1.36
-// 73/100 = .73
-// so for 27 = 28 -27 = 100 - 1.36 = 98.64
-
-// 100 - 1.3 (30-27) = 0
-//
-// .73 (1)
-
 const primeMass = 165;
 const maxMass = 400;
 const massFactor = 100;
@@ -36,3 +27,11 @@ function CalculateMassFactor (mass) {
 }
 
 const health = 100;
+
+// you need to figure out health logic
+// how much does time and opponent strength/mass/age/stamina/skill/grit etc. determine strike power.
+// do you need other factors?
+// recovery speed -> related to stamina?
+// health -> related to strength/age?
+// strike power -> related to strength/skill/mass?
+// what does grit determine?
