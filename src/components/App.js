@@ -4,6 +4,8 @@ import Form from './Form';
 import Input from './Input';
 
 function App() {
+  // you must find a better state solution, either with context, a reducer, or a state object instead
+  
   const [age, setAge] = useState(null)
   const [mass, setMass] = useState(null)
   const [grit, setGrit] = useState(null)

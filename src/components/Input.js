@@ -4,10 +4,12 @@ function Input({ children, type, handleInput }){
         handleInput(event.target.value)
     }
 
-    return <div>
-        <div>{children}</div>
-        <input type={type} onChange={handleChange}></input>
-    </div>
+    return (
+        <div>
+            <div>{children}</div>
+            <input type={type} onChange={handleChange}></input>
+        </div>
+    )
 }
 
 export default Input

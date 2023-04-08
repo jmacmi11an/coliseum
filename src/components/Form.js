@@ -2,11 +2,10 @@ function Form ({ children }){
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log(event.target) 
     }
-  
+  // you have to refactor the button out of this component, it's hardcoded
     return (
-        <div className="form">
+      <div className="form">
         <form onSubmit={handleSubmit} className="form">
 
           { children }
