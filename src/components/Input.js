@@ -1,13 +1,13 @@
-function Input({ children, type, handleInput }){
+function Input({ children, type, value, handleInput, ...rest }){
     
     const handleChange = (event) => {
-        handleInput(event.target.value)
+        handleInput(event.target.value);
     }
 
     return (
         <div>
             <div>{children}</div>
-            <input type={type} onChange={handleChange}></input>
+            <input type={type} {...rest} onChange={handleChange} value={value}/>
         </div>
     )
 }
