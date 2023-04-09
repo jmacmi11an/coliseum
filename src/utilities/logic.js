@@ -1,6 +1,6 @@
 const primeAge = 27;
 const maxAge = 100;
-const ageFactor = 100;
+const ageFactor = 101;
 const youthMultiple = 100/(primeAge-0);
 const ageMultiple = 100/Math.abs(maxAge-primeAge);
 

@@ -28,7 +28,7 @@ function App() {
         </p>
       </div>
 
-      <Form>
+      <Form buttonText={"Run the simulation"}>
         <Input type="number" min="2" max="100" required value={age} handleInput={updateAge}>{age ? `Your age is ${age}` : "Age"}</Input>
         <Input type="number" min="10" max="400" required value={mass} handleInput={updateMass}>{mass ? `Your mass is ${mass}` : "Mass"}</Input>
 

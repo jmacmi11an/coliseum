@@ -1,8 +1,6 @@
 function Input({ children, type, value, handleInput, ...rest }){
     
-    const handleChange = (event) => {
-        handleInput(event.target.value);
-    }
+    const handleChange = (event) => handleInput(event.target.value)
 
     return (
         <div>

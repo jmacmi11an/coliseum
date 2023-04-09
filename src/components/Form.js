@@ -1,16 +1,15 @@
-function Form ({ children }){
+import Button from "./Button";
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-    }
+function Form ({ children, buttonText }){
+
+    const handleSubmit = (event) => event.preventDefault();
+
   // you have to refactor the button out of this component, it's hardcoded
     return (
       <div className="form">
         <form onSubmit={handleSubmit} className="form">
-
           { children }
-
-          <button className="form--button">Run the simulation</button>
+          <Button>{buttonText}</Button>
         </form>
       </div>
     )
