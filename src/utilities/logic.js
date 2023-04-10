@@ -1,10 +1,10 @@
 const primeAge = 27;
 const maxAge = 100;
-const ageFactor = 101;
+const ageFactor = 100;
 const youthMultiple = 100/(primeAge-0);
 const ageMultiple = 100/Math.abs(maxAge-primeAge);
 
-function CalculateAgeFactor (age) {
+export function CalculateAgeFactor (age) {
   return age === primeAge
     ? ageFactor
     : age < primeAge
@@ -18,7 +18,7 @@ const massFactor = 100;
 const lightMultiple = 100/(primeMass-0);
 const heavyMultiple = 100/Math.abs(maxMass-primeMass)
 
-function CalculateMassFactor (mass) {
+export function CalculateMassFactor (mass) {
   return mass === primeMass
     ? massFactor
     : mass < primeMass
@@ -26,7 +26,12 @@ function CalculateMassFactor (mass) {
       : massFactor - heavyMultiple * (mass -primeMass)
 }
 
-const health = 100;
+export const health = 100;
+
+
+export function battle (player1, player2){
+
+}
 
 // you need to figure out health logic
 // how much does time and opponent strength/mass/age/stamina/skill/grit etc. determine strike power.

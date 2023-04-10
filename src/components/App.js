@@ -4,6 +4,7 @@ import Form from './Form';
 import Input from './Input';
 
 function App() {  
+  const [player, setPlayer] = useState({});
   const [age, setAge] = useState('')
   const [mass, setMass] = useState('')
   const [grit, setGrit] = useState('')
@@ -18,6 +19,18 @@ function App() {
   const updateStamina = (value) => value >=0 && value <= 100 && setStamina(value);
   const updateStrength = (value) => value >=0 && value <= 100 && setStrength(value);
 
+  const handleSubmit = () => {
+    setPlayer({
+      age,
+      mass,
+      stamina,
+      strength,
+      skill,
+      grit
+    })
+    console.log(player.age, 'this worked');
+  }
+
 
   return (
     <div className="App">
@@ -28,7 +41,10 @@ function App() {
         </p>
       </div>
 
-      <Form buttonText={"Run the simulation"}>
+      {player.age 
+        ? <p>Your age is {player.age}</p>
+        :
+      <Form buttonText={"Run the simulation"} onSubmit={handleSubmit}>
         <Input type="number" min="2" max="100" required value={age} handleInput={updateAge}>{age ? `Your age is ${age}` : "Age"}</Input>
         <Input type="number" min="10" max="400" required value={mass} handleInput={updateMass}>{mass ? `Your mass is ${mass}` : "Mass"}</Input>
 
@@ -45,6 +61,7 @@ function App() {
 
         <Input type="number" min="0" max="100" required value={grit} handleInput={updateGrit}>{grit ? `Your grit is ${grit}` : "Grit"}</Input>
       </Form>
+      }
     </div>
   );
 }
