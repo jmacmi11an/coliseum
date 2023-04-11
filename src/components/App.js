@@ -1,34 +1,67 @@
 import '../styles/App.css';
-import { useState } from 'react';
+import { useReducer } from 'react';
 import Form from './Form';
 import Input from './Input';
 
-function App() {  
-  const [player, setPlayer] = useState({});
-  const [age, setAge] = useState('')
-  const [mass, setMass] = useState('')
-  const [grit, setGrit] = useState('')
-  const [skill, setSkill] = useState('')
-  const [stamina, setStamina] = useState('')
-  const [strength, setStrength] = useState('')
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'updateAge':
+      return {
+        ...state,
+        age: action.payload
+      };
+    case 'updateMass':
+      return {
+        ...state,
+        mass: action.payload
+      };    
+    case 'updateStrength':
+       return {
+        ...state,
+        strength: action.payload
+      };
+      case 'updateSkill':
+        return {
+          ...state,
+          skill: action.payload
+        };
+      case 'updateStamina':
+        return {
+          ...state,
+          stamina: action.payload
+        };    
+      case 'updateGrit':
+         return {
+          ...state,
+          grit: action.payload
+        };
+      default:
+        throw new Error ("how'd we get here", action.payload);
+  }
+}
 
-  const updateAge = (value) => value >=0 && value <= 100 && setAge(value);
-  const updateMass = (value) => value >=0 && value <= 400 && setMass(value);
-  const updateGrit = (value) => value >=0 && value <= 100 && setGrit(value);
-  const updateSkill = (value) => value >=0 && value <= 100 && setSkill(value);
-  const updateStamina = (value) => value >=0 && value <= 100 && setStamina(value);
-  const updateStrength = (value) => value >=0 && value <= 100 && setStrength(value);
+function App() {  
+  const [state, dispatch] = useReducer(reducer, {
+    age: '',
+    mass: '',
+    skill: '',
+    stamina: '',
+    strength: '',
+    grit: ''
+  })
+
+  const updateAge = (value) => value >=0 && value <= 100 && dispatch({type: 'updateAge', payload: value});
+  const updateMass = (value) => value >=0 && value <= 400 && dispatch({type: 'updateMass', payload: value});
+  const updateSkill = (value) => value >=0 && value <= 100 && dispatch({type: 'updateSkill', payload: value});
+  const updateStamina = (value) => value >=0 && value <= 100 && dispatch({type: 'updateStamina', payload: value});
+  const updateStrength = (value) => value >=0 && value <= 100 && dispatch({type: 'updateStrength', payload: value});
+  const updateGrit = (value) => value >=0 && value <= 100 && dispatch({type: 'updateGrit', payload: value});
+
+
+  const {age, mass, skill, stamina, strength, grit} = state;
 
   const handleSubmit = () => {
-    setPlayer({
-      age,
-      mass,
-      stamina,
-      strength,
-      skill,
-      grit
-    })
-    console.log(player.age, 'this worked');
+    console.log(state, 'this worked');
   }
 
 
@@ -41,9 +74,6 @@ function App() {
         </p>
       </div>
 
-      {player.age 
-        ? <p>Your age is {player.age}</p>
-        :
       <Form buttonText={"Run the simulation"} onSubmit={handleSubmit}>
         <Input type="number" min="2" max="100" required value={age} handleInput={updateAge}>{age ? `Your age is ${age}` : "Age"}</Input>
         <Input type="number" min="10" max="400" required value={mass} handleInput={updateMass}>{mass ? `Your mass is ${mass}` : "Mass"}</Input>
@@ -61,7 +91,6 @@ function App() {
 
         <Input type="number" min="0" max="100" required value={grit} handleInput={updateGrit}>{grit ? `Your grit is ${grit}` : "Grit"}</Input>
       </Form>
-      }
     </div>
   );
 }
